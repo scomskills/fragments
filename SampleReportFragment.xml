@@ -1,0 +1,65 @@
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Reporting>
+    <DataWarehouseScripts>
+      <DataWarehouseScript ID="MyReports.Deploy.MyReportAvailabilityDataDetailGet.Script" Accessibility="Public">
+        <InstallScript>Res.MyReports.Deploy.MyReportAvailabilityDataDetailGet.Script.Install</InstallScript>
+        <UninstallScript>Res.MyReports.Deploy.MyReportAvailabilityDataDetailGet.Script.Uninstall</UninstallScript>
+        <UpgradeScript>Res.MyReports.Deploy.MyReportAvailabilityDataDetailGet.Script.Upgrade</UpgradeScript>
+      </DataWarehouseScript>
+      <DataWarehouseScript ID="MyReports.Deploy.MyReportAvailabilityDataGet.Script" Accessibility="Public">
+        <InstallScript>Res.MyReports.Deploy.MyReportAvailabilityDataGet.Script.Install</InstallScript>
+        <UninstallScript>Res.MyReports.Deploy.MyReportAvailabilityDataGet.Script.Uninstall</UninstallScript>
+        <UpgradeScript>Res.MyReports.Deploy.MyReportAvailabilityDataGet.Script.Upgrade</UpgradeScript>
+      </DataWarehouseScript>
+    </DataWarehouseScripts>
+    <Reports>
+      <Report ID="MyReports.Availability.Main" Accessibility="Public" Visible="true">
+        <Dependencies>
+          <DataWarehouseScript>MyReports.Deploy.MyReportAvailabilityDataGet.Script</DataWarehouseScript>
+        </Dependencies>
+        <ReportDefinition>Res.MyReports.Availability.Main</ReportDefinition>
+      </Report>
+      <Report ID="MyReports.Availability.Detail" Accessibility="Public" Visible="true">
+        <Dependencies>
+          <DataWarehouseScript>MyReports.Deploy.MyReportAvailabilityDataDetailGet.Script</DataWarehouseScript>
+          <Report>MyReports.Availability.Main</Report>
+        </Dependencies>
+        <ReportDefinition>Res.MyReports.Availability.Detail</ReportDefinition>
+      </Report>
+    </Reports>
+  </Reporting>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="MyReports">
+          <Name>MyReports</Name>
+          <Description>This management pack contains all data warehouse and reporting elements for custom MyReports.</Description>
+        </DisplayString>
+        <DisplayString ElementID="MyReports.Availability.Main">
+          <Name>Availability Main</Name>
+          <Description>Availability MyReport Main</Description>
+        </DisplayString>
+        <DisplayString ElementID="MyReports.Availability.Detail">
+          <Name>Availability Detail</Name>
+          <Description>Availability MyReport Detail</Description>
+        </DisplayString>
+        <DisplayString ElementID="MyReports.Deploy.MyReportAvailabilityDataGet.Script">
+          <Name>Deploy MyReport Availability Data Get Script</Name>
+        </DisplayString>
+        <DisplayString ElementID="MyReports.Deploy.MyReportAvailabilityDataDetailGet.Script">
+          <Name>Deploy MyReport Availability Data Detail Get Script</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+  <Resources>
+    <Resource ID="Res.MyReports.Deploy.MyReportAvailabilityDataGet.Script.Install" Accessibility="Public" FileName="Res.MyReports.Deploy.MyReportAvailabilityDataGet.Script.Install.sql" HasNullStream="false" />
+    <Resource ID="Res.MyReports.Deploy.MyReportAvailabilityDataGet.Script.Uninstall" Accessibility="Public" FileName="Res.MyReports.Deploy.MyReportAvailabilityDataGet.Script.Uninstall.sql" HasNullStream="false" />
+    <Resource ID="Res.MyReports.Deploy.MyReportAvailabilityDataGet.Script.Upgrade" Accessibility="Public" FileName="Res.MyReports.Deploy.MyReportAvailabilityDataGet.Script.Upgrade.sql" HasNullStream="false" />
+    <Resource ID="Res.MyReports.Deploy.MyReportAvailabilityDataDetailGet.Script.Install" Accessibility="Public" FileName="Res.MyReports.Deploy.MyReportAvailabilityDataDetailGet.Script.Install.sql" HasNullStream="false" />
+    <Resource ID="Res.MyReports.Deploy.MyReportAvailabilityDataDetailGet.Script.Uninstall" Accessibility="Public" FileName="Res.MyReports.Deploy.MyReportAvailabilityDataDetailGet.Script.Uninstall.sql" HasNullStream="false" />
+    <Resource ID="Res.MyReports.Deploy.MyReportAvailabilityDataDetailGet.Script.Upgrade" Accessibility="Public" FileName="Res.MyReports.Deploy.MyReportAvailabilityDataDetailGet.Script.Upgrade.sql" HasNullStream="false" />
+    <ReportResource ID="Res.MyReports.Availability.Detail" Accessibility="Public" FileName="Res.MyReports.Availability.Detail.rdl" HasNullStream="false" MIMEType="application/octet-stream" />
+    <ReportResource ID="Res.MyReports.Availability.Main" Accessibility="Public" FileName="Res.MyReports.Availability.Main.rdl" HasNullStream="false" MIMEType="application/octet-stream" />
+  </Resources>
+</ManagementPackFragment>

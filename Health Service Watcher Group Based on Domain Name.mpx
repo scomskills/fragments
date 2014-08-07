@@ -1,0 +1,60 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <EntityTypes>
+      <ClassTypes>
+        <ClassType ID="Sample.Group.HealthServiceWatcherGroupYourDomainName" Abstract="false" Accessibility="Public" Base="MSIL!Microsoft.SystemCenter.InstanceGroup" Hosted="false" Singleton="true" />
+      </ClassTypes>
+    </EntityTypes>
+  </TypeDefinitions>
+  <Monitoring>
+    <Discoveries>
+      <Discovery ID="Sample.Discovery.HealthServiceWatcherGroupYourDomainName" ConfirmDelivery="false" Enabled="true" Priority="Normal" Remotable="true" Target="Sample.Group.HealthServiceWatcherGroupYourDomainName">
+        <Category>Discovery</Category>
+        <DiscoveryTypes>
+          <DiscoveryRelationship TypeID="MSIL!Microsoft.SystemCenter.InstanceGroupContainsEntities" />
+        </DiscoveryTypes>
+        <DataSource ID="GroupPop" TypeID="SC!Microsoft.SystemCenter.GroupPopulator">
+          <RuleId>$MPElement$</RuleId>
+          <GroupInstanceId>$MPElement[Name="Sample.Group.HealthServiceWatcherGroupYourDomainName"]$</GroupInstanceId>
+          <MembershipRules>
+            <MembershipRule>
+              <MonitoringClass>$MPElement[Name="SC!Microsoft.SystemCenter.AgentWatcher"]$</MonitoringClass>
+              <RelationshipClass>$MPElement[Name="MSIL!Microsoft.SystemCenter.InstanceGroupContainsEntities"]$</RelationshipClass>
+              <Expression>
+                <Contains>
+                  <MonitoringClass>$MPElement[Name="SC!Microsoft.SystemCenter.HealthService"]$</MonitoringClass>
+                  <Expression>
+                    <Contained>
+                      <MonitoringClass>$MPElement[Name="Windows!Microsoft.Windows.Computer"]$</MonitoringClass>
+                      <Expression>
+                        <RegExExpression>
+                          <ValueExpression>
+                            <Property>$MPElement[Name="Windows!Microsoft.Windows.Computer"]/DomainDnsName$</Property>
+                          </ValueExpression>
+                          <Operator>MatchesRegularExpression</Operator>
+                          <Pattern>YourDomainName</Pattern>
+                        </RegExExpression>
+                      </Expression>
+                    </Contained>
+                  </Expression>
+                </Contains>
+              </Expression>
+            </MembershipRule>
+          </MembershipRules>
+        </DataSource>
+      </Discovery>
+    </Discoveries>
+  </Monitoring>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Sample.Group.HealthServiceWatcherGroupYourDomainName">
+          <Name>Health Service Watcher Group (YourDomainName)</Name>
+        </DisplayString>
+        <DisplayString ElementID="Sample.Discovery.HealthServiceWatcherGroupYourDomainName">
+          <Name>Discovery for Health Service Watcher Group (YourDomainName)</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

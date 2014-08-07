@@ -1,5 +1,6 @@
 ﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <TypeDefinitions>
+    <!--http://blog.scomskills.com/health-service-watcher-group-based-on-domain-name/-->
     <EntityTypes>
       <ClassTypes>
         <ClassType ID="Sample.Group.HealthServiceWatcherGroupYourDomainName" Abstract="false" Accessibility="Public" Base="MSIL!Microsoft.SystemCenter.InstanceGroup" Hosted="false" Singleton="true" />
